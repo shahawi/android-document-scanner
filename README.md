@@ -1,3 +1,24 @@
+# Modified forker version
+
+This version is modified to work with minimum Android sdk 29 and above it uses Uri and Mediastore and follows scoped storage instructions
+
+You will need to create a filepaths.xml in the top app folder under res/xml
+and add this to your app manifest
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+<uses-permission android:name="android.permission.CAMERA" />
+
+<provider android:name="androidx.core.content.FileProvider" android:authorities="com.Me.MyApp.provider" android:exported="false" android:grantUriPermissions="true"> 
+<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+</provider>
+
+this is file_paths.xml
+
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+<external-media-path name="my_images" path="Pictures/MyApp"/>
+</paths> 
+
+change Myapp to your app name and change com.Me.MyApp to your app bundle name
+
 # Android Document Scanner
 
 This is an Android library that lets you scan documents. You can use it to create
